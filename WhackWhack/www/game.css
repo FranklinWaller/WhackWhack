@@ -1,0 +1,62 @@
+* {
+	padding:0;
+	margin: 0;
+}
+
+html,body {
+	height: 100%;
+	width: 100%;
+	font-family: sans-serif;
+	overflow: hidden;
+}
+
+header {
+	width: 100%;
+}
+
+	header .score {
+		position: absolute;
+		left:50%;
+		font-size: 25px;
+	} 
+
+#game {
+	height: 100%;
+	width: 100%;
+	margin-top: 40px;
+}
+
+.row {
+	display: block;
+	clear: both;
+	height: 20%;
+}
+
+	.row .cell {
+		float:left;
+		width: 25%;
+		height: 100%;
+		background-color: green;
+	}
+
+
+
+.gameover {
+	position: absolute;
+	top:0;
+	left: 0;
+
+	display: none;
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(37,37,37,0.2);
+}
+
+.gameover .menu {
+	width: 80%;
+	height: 500px;
+	margin: 10%;
+	background-color: orange;
+	opacity: 1;
+}
