@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>WhackWhack</title>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <link rel="stylesheet" href="fonts.css">
+    	<link rel="stylesheet" href="game.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="ads.js"></script>
+        <script type="text/javascript">
+        //window.location.href = 'main.html';
+        </script>
+    </head>
+    <body>
+    	<header>
+    		<div class="score">0</div>
+    	</header>
+    	<div id="game"></div>
+    	<div class="gameover">
+    		<div class="menu">
+                <span>Score</span>
+    			<div class="current-score">
+	    			0
+	    		</div>
+                <span>Highscore</span>
+	    		<div class="high-score">
+	    			0
+	    		</div>
+    		</div>
+            <a class="buttons" href="#" onclick="window.location.href='game.html'">
+                Restart
+            </a>
+    	</div>
+        <audio id="effects" src="./sound/hit.wav" preload="auto"></audio>
+
+    	<script type="text/javascript" src="./whack.js"></script>
+    	<script src="./game.js"></script>
+        
+    </body>
+</html>

@@ -1,6 +1,7 @@
 (function(global){
 
     var gameField = document.getElementById('game');
+    //var hitSound = new Media('sound/hit.wav');
 
     var whack = {
         score: 0,
@@ -16,7 +17,8 @@
                 var row = '<div class="row">';
 
                 for(var j = 0; j < rowsY; j++){
-                    row += '<div class="cell">Mole</div>';
+                    //row += '<div class="cell"><img src="./img/mole-grass-01.svg" class="mole"></div>';
+                    row += '<div class="cell"><img src="./img/png/grass.png" class="mole"></div>';
                 }
 
                 row += '</div>';
@@ -25,38 +27,40 @@
         },
 
         listenForWhack: function(scorePerMole, clickEventType){
-            var cells = document.getElementsByClassName('cell');
+            var cells = document.getElementsByClassName('mole');
 
             function eventClicked(e){
-
                 var mole = e.srcElement;
 
                 if (mole.classList.contains('isUp')) {
                     whack.score++;
-                    mole.className = 'cell';
-                    mole.style.color = 'black';
+                    //hitSound.play();
+
+                    mole.className = 'mole';
+                    //mole.src = './img/grass-01.svg';
+                    mole.src = './img/png/grass.png';
                     mole.className += ' isClicked';
                     whack.updateScore();
                 }else{
                     whack.showGameOverMenu();
-                }           
+                }
             }
 
             for (var i = cells.length - 1; i >= 0; i--) {
-                cells[i].addEventListener(clickEventType, eventClicked, false);
+                cells[i].parentNode.addEventListener(clickEventType, eventClicked, false);
             };
         },
 
         startMoleTimer: function(moleUpTime, moleDownTime){
-            var cells = document.getElementsByClassName('cell');
+            var cells = document.getElementsByClassName('mole');
             var originalMoleUpTime = moleUpTime;
             var originalMoleDownTime = moleDownTime;
             
             var interval = function(){
                 var randomMole;
 
-                moleUpTime = originalMoleUpTime - whack.score;
-                moleDownTime = originalMoleDownTime - whack.score;
+                moleUpTime = originalMoleUpTime - (whack.score * 7);
+                moleDownTime = originalMoleDownTime - (whack.score * 7);
                
                 do{
                     randomMole = whack.getRandomNumber(0, cells.length);
@@ -66,20 +70,20 @@
                 var mole = cells[randomMole];
                 whack.lastMole = randomMole;
 
-                console.log(moleUpTime + ' and ' + moleDownTime);
-
-                mole.style.color = "white";
                 mole.className += ' isUp';
+                //mole.src = './img/mole-grass-01.svg';
+                mole.src = './img/png/mole.png';
 
                 setTimeout(function(){
-                    mole.style.color = "black";
                     
                     if(!mole.classList.contains('isClicked')){
                         whack.showGameOverMenu();
                     }
 
-                    mole.className = 'cell';
-                    
+                    mole.className = 'mole';
+                    //mole.src = './img/grass-01.svg';
+                    mole.src = './img/png/grass.png';
+
                 }, moleDownTime);
 
                 clearInterval(intervalId);
